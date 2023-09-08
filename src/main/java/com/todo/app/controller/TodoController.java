@@ -33,12 +33,21 @@ public class TodoController {
 	
 	@RequestMapping(value="/add")
     public String add(Todo todo) {
-        todoMapper.add(todo);
-        return "redirect:/";
+		if(todo.getCategory_name()=="") {
+			todo.setCategory_name("nashi");
+		} else if(todo.getTitle()=="") {
+			return "redirect:/";
+		} else {
+	        todoMapper.add(todo);
+		}
+		//if category name is empty then put なし in it place/もしcategory_nameが空白だったら”なし”と入っています
+		//if title is empty, refresh the screen without inputting the data/もしtitleが空白だったら””データを入れず、最初の画面を戻っています
+		return "redirect:/";
     }
 
 	@RequestMapping(value="/update")
     public String update(Todo todo) {
+		System.out.println(todo);
         todoMapper.update(todo);
         return "redirect:/";
     }

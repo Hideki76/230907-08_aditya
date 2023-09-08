@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>TodoApp</title>
 </head>
-<body>
+<body><center>
 	<h1>
 		TodoList
 	</h1>
@@ -31,19 +31,20 @@
     	<input type="date" name="time_limit"th:value="${todo.time_limit}" />
     	<input type="submit" value="更新" />
   	</form>
-	
+  	<br>
+  	<form method="post" th:action="@{/delete}">
+    	<input type="submit" value="完了済みを削除" />
+  	</form>
+	<br>
 	<h3>
 		新しいタスクを追加
 	</h3>
 	<form method="post" th:action="@{/add}">
     	<input type="text" name="title" />
-    	<input type="text" name="category_name"/>
+    	<input type="text" name="category_name" value="nashi"/>
     	<input type="date" name="time_limit"/>
     <input type="submit" value="追加" />
   	</form>
   	
-  	<form method="post" th:action="@{/delete}">
-    	<input type="submit" value="完了済みを削除" />
-  	</form>
-</body>
+</center></body>
 </html>
